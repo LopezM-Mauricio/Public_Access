@@ -23,18 +23,19 @@ library(epitools)
 library(foreign)
 #-------------------------------------------------------------------------------- #
 # 1. LOAD DATA SETS ----
-Data_1998 <- read_excel("Data/DS_ENAH 1998_MASTER_LONG.xlsx")
+Data_1998 <- read_excel("D_Output/DS_ENAH 1998_MASTER_LONG.xlsx")
 #1998 is interval censored, we need to create the lower and upper bounds of the intervals to be able to estimate the NPMLE
 #We call them Age_l_[DrugName], Age_r_[DrugName]
-Data_2002 <- read_excel("Data/DS_ENAH 2002_MASTER_LONG.xlsx")
+Data_2002 <- read_excel("D_Output/DS_ENAH 2002_MASTER_LONG.xlsx")
 #head(Data_2002)
-Data_2008 <- read_excel("Data/DS_ENCODAT 2007-08_MASTER_LONG.xlsx")
+Data_2008 <- read_excel("D_Output/DS_ENCODAT 2007-08_MASTER_LONG.xlsx")
 #head(Data_2008)
-Data_2011 <- read_excel("Data/DS_ENCODAT 2011-12_MASTER_LONG.xlsx")
+Data_2011 <- read_excel("D_Output/DS_ENCODAT 2011-12_MASTER_LONG.xlsx")
 #head(Data_2011)
-Data_2016 <- read_excel("Data/DS_ENCODAT 2016-17_MASTER_LONG.xlsx")
+Data_2016 <- read_excel("D_Output/DS_ENCODAT 2016-17_MASTER_LONG.xlsx")
 #head(Data_2016)
-
+# Note: The raw data sets are available by request. 
+# Please contact the corresponding author at mlopezme@gmail.com
 #-------------------------------------------------------------------------------- #
 # 2. FINAL RECODE ----
 # STANDARDIZING COLUMN FORMATTING
@@ -312,7 +313,7 @@ Data_2016 <- Data_2016 %>%
  
 # # SAVING 1998, for individual surv analysis
 library(zipR)
-openxlsx::write.xlsx(Data_1998, file = "Data/DS_CLEAN_CINT_1998.xlsx")
+openxlsx::write.xlsx(Data_1998, file = "D_Output/DS_CLEAN_CINT_1998.xlsx")
 
 #### 1998-2016 ####
 # Incomplete information for 1998:
@@ -334,7 +335,7 @@ Master_98_16_df$Age_Marihuana[Master_98_16_df$Age_Marihuana == 112] <- NA #this 
 unique(Master_98_16_df$Age_Marihuana)
 
 # sAVING
-openxlsx::write.xlsx(Master_98_16_df, file = "Data/DS_CLEAN_ALL_1998-2016.xlsx")
+openxlsx::write.xlsx(Master_98_16_df, file = "D_Output/DS_CLEAN_ALL_1998-2016.xlsx")
 
 #-------------------------------------------------------------------------------- #
 # 4. MERGE 2  2002-2016 -----
@@ -353,7 +354,7 @@ Master_02_16_df <- as.data.frame(bind_rows(list(
                                   Data_2016)))
 Master_02_16_df$Age_Marihuana[Master_02_16_df$Age_Marihuana == 112] <- NA #this recoding was left out in cleaning
 # Saving
-openxlsx::write.xlsx(Master_02_16_df, file = "Data/DS_CLEAN_ALL_2002-2016.xlsx")
+openxlsx::write.xlsx(Master_02_16_df, file = "D_Output/DS_CLEAN_ALL_2002-2016.xlsx")
 
 #-------------------------------------------------------------------------------- #
 # 5. Marihuana Data Sets ----
@@ -415,8 +416,8 @@ DMarihuana_1998_2016_v2 <- DMarihuana_1998_2016 %>%
 #head(DMarihuana_1998_2016)
 #tail(DMarihuana_1998_2016)[,11:14]
 
-openxlsx::write.xlsx(DMarihuana_1998_2016, file    = "Data/DS_SURV_MARIHUANA_1998_2016.xlsx")
-openxlsx::write.xlsx(DMarihuana_1998_2016_v2, file = "Data/DS_SURV_MARIHUANA_1998_2016_v2.xlsx")
+openxlsx::write.xlsx(DMarihuana_1998_2016, file    = "D_Output/DS_SURV_MARIHUANA_1998_2016.xlsx")
+openxlsx::write.xlsx(DMarihuana_1998_2016_v2, file = "D_Output/DS_SURV_MARIHUANA_1998_2016_v2.xlsx")
 
 #-------------------------------------------------------------------------------- #
 
@@ -429,4 +430,4 @@ DMarihuana_2002_2016 <- DMarihuana_1998_2016%>%
 head(DMarihuana_2002_2016)
 unique(DMarihuana_2002_2016$Event)
 
-openxlsx::write.xlsx(DMarihuana_2002_2016, file = "Data/DS_SURV_MARIHUANA_2002_2016.xlsx")
+openxlsx::write.xlsx(DMarihuana_2002_2016, file = "D_Output/DS_SURV_MARIHUANA_2002_2016.xlsx")

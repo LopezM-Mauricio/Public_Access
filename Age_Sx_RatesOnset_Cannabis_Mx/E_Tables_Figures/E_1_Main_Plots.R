@@ -296,12 +296,13 @@ plot_all_cohort <- ggplot(data = plot_df_all_c, aes(x = Init.Age, y = h_t*(1000)
 plot_all_cohort
 
 #------------------------------------------------------------------------------- #
-## 4.3 Consolidated Plot Plot ----
+## 4.3 Figure 3 ----
 patch_1 <- plot_all_period /plot_all_cohort
 Figure_3 <- patch_1 + plot_annotation(tag_levels = list(c("(A) by Period","(B) by Decennial Birth Cohort"))) & 
   theme(plot.tag = element_text(size = 20, hjust = 0, vjust = 0, face = "bold"),
         plot.tag.position = c(0,.98)) 
 Figure_3
+#------------------------------------------------------------------------------- #
 #------------------------------------------------------------------------------- #
 # 5. Conditional Mean Plots ----
 female_cmean_cohort <-data.frame(Trend ="Cohort", 
@@ -404,9 +405,122 @@ cm_plot2<- ggplot(all.cmean_period, aes(y= est, x= as.factor(Temp), ymin = as.nu
   scale_fill_manual(values = inferno(2, alpha = 1, begin = 0, end = .8, direction = 1))
 cm_plot2
 
+## 5.1 Figure 2 ----
 patch2   <- cm_plot2 + cm_plot1
 Figure_2 <- patch2 + plot_annotation(tag_levels = list(c("(A) by Period","(B) by Decennial Birth Cohort"))) & 
   theme(plot.tag = element_text(size = 20, hjust = 0, vjust = 0, face = "bold"),
         plot.tag.position = c(0,.98)) 
 Figure_2
+#------------------------------------------------------------------------------- #
+#-------------------------------------------------------------------------------- #
+# 6 Trends (Log Cum Odds) ----
+#-------------------------------------------------------------------------------- #
+# Function to compute the contribution of covariates to the log cumulative odds from best fitted model coefficients
+# takes as input a vector of sorted values of the temporal covariate (period,cohort), the degree of the orth. polynomial model, 
+# and the coefficients of the orth. poynomial model
+# returns a vector in the log cumulative odds scale that represent the change in the log cumulative odds per unitary change in the covariate
+
+poly_trend <- function(x, poly_d, coeffs){
+  trend <- list()
+  x_num <- unique(as.numeric(x))
+  m <- as.matrix(poly(x_num,poly_d))
+  trend[[1]] <- (m%*%coeffs)%*%c(rep(1,poly_d))
+  return(trend)
+}
+#-------------------------------------------------------------------------------- #
+# 6.1 Extracting trends ----
+# extracting est for linear model
+coeffs_f_p_d1<- mod_odds_females_period$res[6,1]
+
+cohorts<- c(1930,1940,1950,1960,1970,1980,1990)
+periods<- c(1998,2002,2008,2011,2016)
+female_p_trend_d1<- as.data.frame(poly_trend(x=periods, poly_d  = 1, coeffs = coeffs_f_p_d1)  )
+names(female_p_trend_d1)<- "est"
+female_p_trend_d1<-female_p_trend_d1 %>%mutate(Period=periods, Sex ="Female")
+#-------------------------------------------------------------------------------- #
+# extracting est for cubic models
+
+coeffs_f_c_d3<- diag(mod_odds_females_cohort$res[6:8,1])
+coeffs_m_c_d3<- diag(mod_odds_males_cohort$res[10:12,1])
+coeffs_m_p_d3<- diag(mod_odds_males_period$res[9:11,1])
+
+female_c_trend_d3<- as.data.frame(poly_trend(x=cohorts, poly_d  = 3, coeffs = coeffs_f_c_d3)  )
+male_c_trend_d3  <- as.data.frame(poly_trend(x=cohorts, poly_d  = 3, coeffs = coeffs_m_c_d3)  )
+male_p_trend_d3  <- as.data.frame(poly_trend(x=periods, poly_d  = 3, coeffs = coeffs_m_p_d3) ) 
+
+names(female_c_trend_d3)<- "est"
+names(male_c_trend_d3)<- "est"
+names(male_p_trend_d3)<- "est"
+female_c_trend_d3<-female_c_trend_d3 %>%mutate(Cohort=cohorts, Sex ="Female")
+male_c_trend_d3  <-male_c_trend_d3   %>%mutate(Cohort=cohorts, Sex ="Male")
+male_p_trend_d3  <-male_p_trend_d3   %>%mutate(Period=periods, Sex ="Male")
+
+cohort_trends_d3 <- rbind(female_c_trend_d3,male_c_trend_d3)
+#-------------------------------------------------------------------------------- #
+## 6.2 Trend Plots ----
+best_fit_trends_cohort <- cohort_trends_d3
+best_fit_trends_cohort$Trend <- "Cubic"
+best_fit_trends_cohort$Sex <- c(rep("Female",7),rep("Male",7))
+plot_cohort_trend <- ggplot(best_fit_trends_cohort, aes(x=Cohort, y=est, color=Sex, shape=Sex, linetype = Trend))+
+  labs(#title = "Change in the Log Cum Rate/Odds of Onset as a function of Cohort, by Sex",
+    subtitle = ""
+  )+    
+  xlab("Cohort") +
+  ylab(bquote("Effect on Log-Cumulative Odds of Onset")) +
+  theme_bw()+
+  theme(legend.position = "",
+        legend.key.size = unit(.7, "cm"),
+        legend.text=element_text(size=18),
+        legend.title=element_text(size=18),
+        plot.title = element_text(size=20),
+        plot.subtitle = element_text(size=18),
+        axis.text = element_text(size = 13),
+        axis.title = element_text(size = 16))+
+  scale_x_continuous(breaks = seq(1930,1990,10)) +
+  #scale_y_continuous(breaks = number_ticks(14)) +
+  scale_colour_manual(values = inferno(2, alpha = 1, begin = 0, end = .8, direction = 1))+
+  scale_fill_manual(values = inferno(2, alpha = 1, begin = 0, end = 1, direction = 1))+
+  
+  geom_line(size=1)+
+  geom_point(size=4.5, alpha=1)
+plot_cohort_trend
+
+female_p_trend_d1$Trend <- "Linear"
+female_p_trend_d1$Sex <- "Female"
+male_p_trend_d3$Trend <- "Cubic"
+male_p_trend_d3$Sex <- "Male"
+best_fit_trends_period<- rbind(female_p_trend_d1,male_p_trend_d3)
+
+plot_period_trend <-ggplot(best_fit_trends_period, aes(x=(as.integer(Period)), y=est, color=Sex, shape=Sex, linetype = Trend))+
+  labs(#title = "Change in the Log Cum Rate/Odds of Onset as a function of Period, by Sex",
+    subtitle = ""
+  )+    
+  xlab("Period") +
+  ylab(bquote("Effect on Log-Cumulative Odds of Onset")) +
+  theme_bw()+
+  theme(legend.position = "right",
+        legend.key.size = unit(.7, "cm"),
+        legend.text=element_text(size=18),
+        legend.title=element_text(size=18),
+        plot.title = element_text(size=20),
+        plot.subtitle = element_text(size=18),
+        axis.text = element_text(size = 13),
+        axis.title = element_text(size = 16))+
+  scale_x_discrete(limits = seq(1998,2016,1),  #c(1998,2002,2008,2011,2016)) +
+                   labels = c("1998","","","","2002","","","","","","2008","","","2011","","","","","2016")) +
+  #guides(colour = guide_legend(nrow = 1))+
+  scale_colour_manual(values = inferno(2, alpha = 1, begin = 0, end = .8, direction = 1))+
+  scale_fill_manual(values = inferno(2, alpha = 1, begin = 0, end = 1, direction = 1))+
+  
+  geom_line(size=1)+
+  geom_point(size=4.5, alpha=1)
+plot_period_trend
+#-------------------------------------------------------------------------------- #
+## 6.3 Figure 4 ----
+patch_3 <- plot_period_trend / plot_cohort_trend
+Figure_4 <- patch_3 + plot_layout(guides = 'collect') +
+  plot_annotation(tag_levels = list(c("(A) Linear Trend (Females) vs Cubic Trend (Males), by Period ","(B) Cubic Trend (Females) vs Cubic Trend (Males), by Cohort"))) & 
+  theme(plot.tag = element_text(size = 20, hjust = 0, vjust = 0, face = "bold"),
+        plot.tag.position = c(0,.98)) 
+Figure_4
 

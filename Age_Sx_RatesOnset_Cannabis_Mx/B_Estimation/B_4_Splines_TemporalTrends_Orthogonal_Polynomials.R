@@ -147,125 +147,22 @@ mod9_m_p_2 <- flexsurvspline(model_inputs_period$surv_objects$so_male_p         
 #-------------------------------------------------------------------------------- #
 # 3. Comparing trends by AIC ----
 mod7_f_c_1$AIC
-mod8_f_c_1$AIC #best
+mod8_f_c_1$AIC 
 mod9_f_c_1$AIC
 
 mod7_m_c_1$AIC
-mod8_m_c_1$AIC #best
+mod8_m_c_1$AIC 
 mod9_m_c_1$AIC
 
-mod7_f_p_1$AIC #best
+mod7_f_p_1$AIC 
 mod8_f_p_1$AIC 
 mod9_f_p_1$AIC
 
 mod7_m_p_1$AIC
-mod8_m_p_1$AIC #best
-mod9_m_p_1$AIC
+mod8_m_p_1$AIC 
+mod9_m_p_1$AI
 #-------------------------------------------------------------------------------- #
 # 4. Saving Models  ----
-
-model_output_f_c<- list(female_c_prop = list(
-# mod1_f_c_1=mod1_f_c_1,
-# mod2_f_c_1=mod2_f_c_1,
-# mod3_f_c_1=mod3_f_c_1,
-# mod4_f_c_1=mod4_f_c_1,
-# mod5_f_c_1=mod5_f_c_1,
-# mod6_f_c_1=mod6_f_c_1,
-mod7_f_c_1=mod7_f_c_1,
-mod8_f_c_1=mod8_f_c_1,
-mod9_f_c_1=mod9_f_c_1),
-female_c_nonprop = list(
-#mod1_f_c_2=mod1_f_c_2,
-# mod2_f_c_2=mod2_f_c_2,
-# mod3_f_c_2=mod3_f_c_2,
-# mod4_f_c_2=mod4_f_c_2,
-# mod5_f_c_2=mod5_f_c_2,
-# mod6_f_c_2=mod6_f_c_2,
-mod7_f_c_2=mod7_f_c_2,
-mod8_f_c_2=mod8_f_c_2,
-mod9_f_c_2=mod9_f_c_2))
-save(model_output_f_c, file = "D_Output/model_output_f_c.RData")
-
-model_output_m_c<- list(male_c_prop = list(
-# mod1_m_c_1=mod1_m_c_1,
-# mod2_m_c_1=mod2_m_c_1,
-# mod3_m_c_1=mod3_m_c_1,
-# mod4_m_c_1=mod4_m_c_1,
-# mod5_m_c_1=mod5_m_c_1,
-# mod6_m_c_1=mod6_m_c_1,
-mod7_m_c_1=mod7_m_c_1,
-mod8_m_c_1=mod8_m_c_1,
-mod9_m_c_1=mod9_m_c_1),
-male_c_nonprop = list(
-# mod1_m_c_2=mod1_m_c_2,
-# mod2_m_c_2=mod2_m_c_2,
-# mod3_m_c_2=mod3_m_c_2,
-# mod4_m_c_2=mod4_m_c_2,
-# mod5_m_c_2=mod5_m_c_2,
-# mod6_m_c_2=mod6_m_c_2,
-mod7_m_c_2=mod7_m_c_2,
-mod8_m_c_2=mod8_m_c_2,
-mod9_m_c_2=mod9_m_c_2))
-save(model_output_m_c, file = "D_Output/model_output_m_c.RData")
-
-
-model_output_f_p<- list(female_p_prop = list(
- # mod1_f_p_1=mod1_f_p_1,
-#  mod2_f_p_1=mod2_f_p_1,
-#  mod3_f_p_1=mod3_f_p_1,
-#  mod4_f_p_1=mod4_f_p_1,
-#  mod5_f_p_1=mod5_f_p_1,
-#  mod6_f_p_1=mod6_f_p_1,
-  mod7_f_p_1=mod7_f_p_1,
-  mod8_f_p_1=mod8_f_p_1,
-  mod9_f_p_1=mod9_f_p_1),
-  female_p_nonprop = list(
-#    mod1_f_p_2=mod1_f_p_2,
-#    mod2_f_p_2=mod2_f_p_2,
-#    mod3_f_p_2=mod3_f_p_2,
-#    mod4_f_p_2=mod4_f_p_2,
-#    mod5_f_p_2=mod5_f_p_2,
-#    mod6_f_p_2=mod6_f_p_2,
-    mod7_f_p_2=mod7_f_p_2,
-    mod8_f_p_2=mod8_f_p_2,
-    mod9_f_p_2=mod9_f_p_2))
-save(model_output_f_p, file = "D_Output/model_output_f_p.RData")
-
-model_output_m_p<- list(male_p_prop = list(
-#  mod1_m_p_1=mod1_f_p_1,
-#  mod2_m_p_1=mod2_f_p_1,
-#  mod3_m_p_1=mod3_f_p_1,
-#  mod4_m_p_1=mod4_f_p_1,
-#  mod5_m_p_1=mod5_f_p_1,
-#  mod6_m_p_1=mod6_f_p_1,
-  mod7_m_p_1=mod7_m_p_1,
-  mod8_m_p_1=mod8_m_p_1,
-  mod9_m_p_1=mod9_m_p_1),
-  male_p_nonprop = list(
-#   mod1_m_p_2=mod1_f_p_2,
-#    mod2_m_p_2=mod2_f_p_2,
-#    mod3_m_p_2=mod3_f_p_2,
-#    mod4_m_p_2=mod4_f_p_2,
-#    mod5_m_p_2=mod5_f_p_2,
-#    mod6_m_p_2=mod6_f_p_2,
-    mod7_m_p_2=mod7_m_p_2,
-    mod8_m_p_2=mod8_m_p_2,
-    mod9_m_p_2=mod9_m_p_2))
-save(model_output_m_p, file = "D_Output/model_output_m_p.RData")
-
-
-female_c_prop  <- list(mod7_f_c_1=mod7_f_c_1, mod8_f_c_1=mod8_f_c_1, mod9_f_c_1=mod9_f_c_1)
-male_c_prop    <- list(mod7_m_c_1=mod7_m_c_1, mod8_m_c_1=mod8_m_c_1, mod9_m_c_1=mod9_m_c_1)
-
-female_p_prop  <- list(mod7_f_p_1=mod7_f_p_1, mod8_f_p_1=mod8_f_p_1, mod9_f_p_1=mod9_f_p_1)
-male_p_prop    <- list(mod7_m_p_1=mod7_m_p_1, mod8_m_p_1=mod8_m_p_1, mod9_m_p_1=mod9_m_p_1)
-
-final_models <- list(female_c_prop=female_c_prop,
-                     male_c_prop  =male_c_prop  ,
-                     female_p_prop=female_p_prop,
-                     male_p_prop  =male_p_prop  )
-
-save(final_models, file="D_Output/final_models.RData")
 
 best_fit_prop_models_final <- list(mod8_f_c_1 = mod8_f_c_1, mod8_m_c_1 = mod8_m_c_1,
                                    mod9_f_p_1 = mod9_f_p_1, mod8_m_p_1 = mod8_m_p_1)
