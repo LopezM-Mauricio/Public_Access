@@ -22,8 +22,8 @@ library(dampack)
 library(viridis)
 #-------------------------------------------------------
 ## ---------------------------------------------------------------------------------------------------------- #
-load("model_inputs_cohort.RData")
-load("model_inputs_period.RData")
+load("D_Output/model_inputs_cohort.RData")
+load("D_Output/model_inputs_period.RData")
 # ---------------------------------------------------------------------------------------------------------- #
 model_inputs_cohort$data_dfs$df_frmale_c$Cohort.dec <- ifelse(model_inputs_cohort$data_dfs$df_frmale_c$Cohort.dec== 1, 1930,
                                                               ifelse(model_inputs_cohort$data_dfs$df_frmale_c$Cohort.dec==2, 1940,
