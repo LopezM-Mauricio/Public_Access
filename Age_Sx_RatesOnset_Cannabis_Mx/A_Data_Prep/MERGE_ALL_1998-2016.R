@@ -34,7 +34,7 @@ Data_2011 <- read_excel("D_Output/DS_ENCODAT 2011-12_MASTER_LONG.xlsx")
 #head(Data_2011)
 Data_2016 <- read_excel("D_Output/DS_ENCODAT 2016-17_MASTER_LONG.xlsx")
 #head(Data_2016)
-# Note: The raw data sets are available by request. 
+# Note: The individual data sets are available only by request. 
 # Please contact the corresponding author at mlopezme@gmail.com
 #-------------------------------------------------------------------------------- #
 # 2. FINAL RECODE ----

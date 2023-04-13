@@ -103,7 +103,7 @@ boot_sample_surv <- function(m,original_sample){
 # Bootstrap Samples by Strata
 m <- 3 # In the paper we use 300 replication samples, 
 #beware that it is computationally intensive to fit data to the flexsurv models, 
-#it may take several hours to obtain estimates for more than 20 samples. 
+# depending on your hardware, it may take several hours to obtain estimates for more than 50 samples for all four models. 
 # Strata 1 | Female
 ptime <- system.time(
 bootstrap_sample_female <- boot_sample_surv(m,original_sample_female)
