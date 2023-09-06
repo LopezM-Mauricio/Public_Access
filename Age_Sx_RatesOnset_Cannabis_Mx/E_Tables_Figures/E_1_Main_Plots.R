@@ -121,11 +121,6 @@ colnames(plot_df_male_p)
 plot_df_female_p$Sex  <- "female"
 plot_df_male_p$Sex    <- "male"
 
-#plot_df_female_p$Period <- as.factor(plot_df_female_p$Period)
-#plot_df_female_p$Period <-factor(plot_df_female_p$Period , levels = c("2016","2011","2008","2002","1998"))
-# plot_df_female_p[plot_df_female_p$h_t <0]<-0
-# plot_df_female_p[plot_df_female_p$lcl <0]<-0
-# plot_df_female_p[plot_df_female_p$ucl <0]<-0
 
 #------------------------------------------------------------------------------- #
 #------------------------------------------------------------------------------- #
