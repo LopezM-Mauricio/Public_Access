@@ -11,7 +11,7 @@ Selected R Code files from different papers/projects
 
 2. Model_based_Eval_ADP_serial_hs_cTn: contains selected code of a microsimualtion model to asess the performance of 3 clincal risk-prediction algorithms (ADPs). The repository is self-contained and should run smoothly on your computer. I used R version 2022.07.1.
 
-    An overview of the modeling framework and preliminary results were presented in the Annual conference of the Society for Medical Decision Making (SMDM) in October 2023. Please see poster           below. 
+    An overview of the modeling framework and preliminary results were presented in the Annual Conference of the Society for Medical Decision Making (SMDM) in October 2023. Please see poster           below. 
 
    [LopezM_Mauricio_Poster_Model_based_analysis_ADPs_NSTEMI_SMDM2_Oct_2023_final.pdf](https://github.com/LopezM-Mauricio/Public_Access/files/13361400/LopezM_Mauricio_Poster_Model_based_analysis_ADPs_NSTEMI_SMDM2_Oct_2023_final.pdf)
 
