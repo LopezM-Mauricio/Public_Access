@@ -20,6 +20,6 @@ Selected R Code files from different papers/projects
     
 
     NOTE: This project is still in progress, I appreciate if you don't share or reference this project at the moment. Results are at most "preliminary".
-   Also note that the current public access repository  contains code to evaluate ADPs that only use serial hs-cTn measurements. More updated will come in the following months including ADPS     
-   that also use risk scores as inputs.
+   Also note that the current public access repository  contains code to evaluate ADPs that only use serial hs-cTn measurements. Updates will come in the following months including code to 
+   simulate and evaluate ADPS that also use risk scores as inputs.
 
