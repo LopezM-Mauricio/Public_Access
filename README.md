@@ -9,7 +9,7 @@ Selected R Code files from different papers/projects
     For raw data files please contact me at mlopezme@gmail.com. 
     The article is freely available at https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8645182/
 
-2. Model_based_Eval_ADP_serial_hs_cTn: contains selected code of a microsimualtion model to asess the performance of 3 clincal risk-prediction algorithms (ADPs). The repository is self-contained and should run smoothly on your computer. I used R version 2022.07.1.
+2. Model_based_Eval_ADP_serial_hs_cTn: contains selected code of a microsimualtion model to asess the performance of 3 clincal risk-prediction algorithms, or "accelrated diagnositc paths" (ADPs). These ADPs are used in emergency care settings and classify patients presenting to the ED with chest-pain based on their risk of experiencing myocardial infarction. The repository is self-contained and should run smoothly on your computer. I used R version 2022.07.1.
 
     An overview of the modeling framework and preliminary results were presented (oral presentation and poster) in the Annual Conference of the Society for Medical Decision Making (SMDM) in October 2023. Please see poster below. 
 
