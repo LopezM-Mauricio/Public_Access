@@ -21,7 +21,7 @@ Selected R Code files from different papers/projects
     https://t4fc3v-mauricio-lopez0mendez.shinyapps.io/Widget_HFM_hscTn/
     
 
-    NOTE: This project is still in progress, I appreciate if you don't share or reference this project at the moment. Results are at most "preliminary".
+    NOTE: This project is still in progress, I appreciate if you don't share or reference this project at the moment. Results are "preliminary".
    Also note that the current public access repository  contains code to evaluate ADPs that only use serial hs-cTn measurements. Updates will come in the following months including code to 
    simulate and evaluate ADPS that also use risk scores as inputs, as well as a scientific article. Finally, raw data is only available upon request, please contact me at mlopezme@gmail.com. 
 
