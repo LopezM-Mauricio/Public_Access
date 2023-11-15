@@ -11,10 +11,13 @@ Selected R Code files from different papers/projects
 
 2. Model_based_Eval_ADP_serial_hs_cTn: contains selected code of a microsimualtion model to asess the performance of 3 clincal risk-prediction algorithms (ADPs). The repository is self-contained and should run smoothly on your computer. I used R version 2022.07.1.
 
-    An overview of the modeling framework and preliminary results were presented in the annual conferenc of the society of medical decision making (SMDM) in october 2023. Please see poster           below. There is also a shiny App were you can play around with the kinetic model I developed. I appreciate your feedback to improve and expand this app.
+    An overview of the modeling framework and preliminary results were presented in the Annual conference of the Society for Medical Decision Making (SMDM) in October 2023. Please see poster           below. 
 
    [LopezM_Mauricio_Poster_Model_based_analysis_ADPs_NSTEMI_SMDM2_Oct_2023_final.pdf](https://github.com/LopezM-Mauricio/Public_Access/files/13361400/LopezM_Mauricio_Poster_Model_based_analysis_ADPs_NSTEMI_SMDM2_Oct_2023_final.pdf)
 
+    There is also a shiny App were you can play around with the kinetic model I developed. I appreciate your feedback to improve and expand this app.
+    https://t4fc3v-mauricio-lopez0mendez.shinyapps.io/Widget_HFM_hscTn/
+    
 
 NOTE: This project is still in progress, I appreciate if you don't share or reference this project at the moment. Results are at most "preliminary". 
 
