@@ -223,14 +223,14 @@ bp_peak_NoMI<-ggplot(peak_dist_noMI, aes( x= peak))+
 bp_peak_NoMI
 require(patchwork)
 
-bp_peak_all <- (bp_peak_acute+bp_peak_chronic+bp_peak_NoMI)/ (bp_peak_typeI + bp_peak_typeII) + plot_annotation(
+bxplot_peak_all <- (bp_peak_acute+bp_peak_chronic+bp_peak_NoMI)/ (bp_peak_typeI + bp_peak_typeII) + plot_annotation(
   title = 'Interquartile Range of Peak hs-cTn Concentration (ng/L)',
   subtitle = 'Predicted (black) vs Observed (red), n= 5,000',
   theme = theme(plot.title = element_text(size = 22))
   #caption = 'Disclaimer: None of these plots are insightful'
 )
-bp_peak_all
-ggsave(bp_peak_all, file= "Figures/bp_peak_all.png", width = 16, height = 13.2)
+bxplot_peak_all
+ggsave(bxplot_peak_all, file= "Figures/bxplot_peak_all.png", width = 16, height = 13.2)
 
 # ------------------- #
 # Boxplot all subpops peak
@@ -364,12 +364,12 @@ bp_prest_NoMI<-ggplot(presentation_dist_noMI, aes( x= y))+
 bp_prest_NoMI
 require(patchwork)
 
-bp_prest_all <- (bp_prest_acute + bp_prest_chronic +bp_prest_NoMI)/ (bp_prest_typeI +bp_prest_typeII) + plot_annotation(
+bxplot_prest_all <- (bp_prest_acute + bp_prest_chronic +bp_prest_NoMI)/ (bp_prest_typeI +bp_prest_typeII) + plot_annotation(
   title = 'Interquartile Range of hs-cTn Concentration (ng/L) at Presentation to ED',
   subtitle = 'Predicted (black) vs Observed (red), n= 5,000',
   theme = theme(plot.title = element_text(size = 22))
   #caption = 'Disclaimer: None of these plots are insightful'
 )
-bp_prest_all
-ggsave(bp_prest_all, file= "Figures/bp_prest_all.png", width = 16, height = 13.2)
+bxplot_prest_all
+ggsave(bxplot_prest_all, file= "Figures/bxplot_prest_all.png", width = 16, height = 13.2)
 
