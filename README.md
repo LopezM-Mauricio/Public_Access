@@ -9,15 +9,15 @@ Selected R Code files from different papers/projects
     For raw data files please contact me at mlopezme@gmail.com. 
     The article is freely available at https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8645182/
 
-2. Model_based_Eval_ADP_serial_hs_cTn: contains selected code of a microsimualtion model to asess the performance of 3 clincal risk-prediction algorithms, or "accelerated diagnositc paths" (ADPs). These ADPs are used in emergency care settings and classify patients presenting to the ED with chest-pain based on their risk of experiencing myocardial infarction. The repository is self-contained and should run smoothly on your computer. I used R version 2022.07.1.
+2. Model_based_Eval_ADP_serial_hs_cTn: contains selected code of a microsimulation model to asess the performance of 3 clincal risk-prediction algorithms, or "accelerated diagnositc paths" (ADPs). These ADPs are used in emergency care settings and classify patients presenting to the ED with chest-pain based on their risk of experiencing myocardial infarction. The repository is self-contained and should run smoothly on your computer. I used R version 2022.07.1.
 
-    An overview of the modeling framework and preliminary results were presented (oral presentation and poster) in the Annual Conference of the Society for Medical Decision Making (SMDM) in October 2023. Please see poster below. 
+    I presented an overview of the modeling framework and preliminary results (oral presentation and poster) at the Annual Conference of the Society for Medical Decision Making (SMDM) in October 2023. Please see poster below. 
 
     Lopez-Mendez M, Jutkowitz E, Trikalinos TA. Model-based Evaluation of Accelerated Diagnostic Paths with High Sensitivity Cardiac Troponin for Detection of Non ST-Elevation Myocardial Infarction in the Emergency Department. Society for Medical Decision Making. October 2023
 
     [LopezM_Mauricio_Poster_Model_based_analysis_ADPs_NSTEMI_SMDM2_Oct_2023_final.pdf](https://github.com/LopezM-Mauricio/Public_Access/files/13361400/LopezM_Mauricio_Poster_Model_based_analysis_ADPs_NSTEMI_SMDM2_Oct_2023_final.pdf)
 
-    There is also a shiny App were you can play around with the kinetic model I developed. I appreciate your feedback to improve and expand this app.
+    There is also a shiny App were you can play around with the dynamic model I developed. I appreciate your feedback to improve and expand this app.
     https://t4fc3v-mauricio-lopez0mendez.shinyapps.io/Widget_HFM_hscTn/
     
 
