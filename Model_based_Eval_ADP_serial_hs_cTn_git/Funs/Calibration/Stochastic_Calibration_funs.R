@@ -156,9 +156,10 @@ stochastic_calibration_fun <- function(
 # ----------------------------------------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------------------------------------- #
 # Box function
-# Auxiliary used for calibrating mixture distribution of MI-specific trajectories
-# the function creates grid-boxes around parameter initial values constrained to the space [0,1]
-# Dealing with Simplex: function keeps the parameter configurations that sum to one, or up to a user-specified error-threshold (practical approach for now)
+# I wrote this auxiliary function used for calibrating the mixture distribution of MI-specific trajectories
+# the function creates grid-boxes (lattice) around parameter initial values constrained to the space [0,1]
+# Dealing with Simplex: function keeps the parameter configurations that sum to one, or up to a user-specified error-threshold 
+# is a combinatorial brute-force approach
 # inputs: 
 ## vector/scalar of initial values all in the interval (0,1) and must sum to one, 
 ## vector/scalar with  bandwidth of boxes , 
@@ -176,7 +177,7 @@ box_optim <- function(
   names <- c(paste("param",as.character(1:length(v_init_values)), sep= "_"))
   colnames(boxes) <- names
   #boxes
-  #create grid-boxes around initial values, store them in tibble
+  #create grid-boxes (lattice) around initial values, store them in tibble
   for (i in seq_along(v_init_values)) {
     min <- v_init_values[i]-(bandwidth/2)
     max <- v_init_values[i]+(bandwidth/2)
@@ -195,11 +196,8 @@ box_optim <- function(
   # rowsums of configurations
   boxes_configs$sum <- rowSums(boxes_configs)
   #boxes_configs
-  #dim(boxes_configs)
   # keep those that sum to 1
   boxes_simplex     <- boxes_configs[boxes_configs$sum > 1-epsilon & boxes_configs$sum < 1 + epsilon,]
-  #dim(boxes_simplex)
-  #View(boxes_simplex)
   # check we don't have crazy results
   sum(boxes_simplex < 0)
   sum(boxes_simplex[,1:length(v_init_values)] >1 )
@@ -234,7 +232,7 @@ box_optim <- function(
 ## sample size
 ## time horizon
 ## list of optimal parameters for MI-specific trajectories
-# output: tibble with param configuration (set of wixture weights), and their corresponding quadratic loss 
+# output: tibble with param configuration (set of mixture weights), and their corresponding quadratic loss 
 
 mixture_calibration_fun <-function(
     v_init_values,    # vector of initial values for weights
